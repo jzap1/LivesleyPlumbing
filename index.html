@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livesley Plumbing | Christchurch Plumbers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .review-card {
+            transition: all 0.3s ease;
+        }
+        
+        .review-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .floating-button {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-blue-800 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-tools text-2xl mr-2"></i>
+                <span class="text-xl font-bold">Livesley Plumbing</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-blue-200 transition">Home</a>
+                <a href="#services" class="hover:text-blue-200 transition">Services</a>
+                <a href="#about" class="hover:text-blue-200 transition">About</a>
+                <a href="#reviews" class="hover:text-blue-200 transition">Reviews</a>
+                <a href="#contact" class="hover:text-blue-200 transition">Contact</a>
+            </div>
+            <button class="md:hidden focus:outline-none" id="menu-toggle">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-blue-700 px-4 py-2" id="mobile-menu">
+            <a href="#home" class="block py-2 hover:text-blue-200 transition">Home</a>
+            <a href="#services" class="block py-2 hover:text-blue-200 transition">Services</a>
+            <a href="#about" class="block py-2 hover:text-blue-200 transition">About</a>
+            <a href="#reviews" class="block py-2 hover:text-blue-200 transition">Reviews</a>
+            <a href="#contact" class="block py-2 hover:text-blue-200 transition">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero text-white py-20 md:py-32 flex items-center">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Your Trusted Christchurch Plumber</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Professional plumbing services for residential and commercial properties across Canterbury</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="tel:+64000000000" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition flex items-center justify-center">
+                    <i class="fas fa-phone mr-2"></i> Call Now
+                </a>
+                <a href="#contact" class="bg-white hover:bg-gray-100 text-blue-800 font-bold py-3 px-6 rounded-lg transition flex items-center justify-center">
+                    <i class="fas fa-envelope mr-2"></i> Get a Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-800">Our Plumbing Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-home text-6xl text-blue-600"></i>
+                    </div>
+                    <div classp-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-800">Residential Plumbing</h3>
+                        <p class="text-gray-600">From leaky taps to complete bathroom renovations, we handle all your home plumbing needs with care and expertise.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-building text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-800">Commercial Plumbing</h3>
+                        <p class="text-gray-600">Professional plumbing solutions for businesses and semi-commercial properties throughout Canterbury.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-exclamation-triangle text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-800">Emergency Services</h3>
+                        <p class="text-gray-600">24/7 emergency plumbing services when you need them most. Burst pipes, blocked drains - we're here to help.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-tint text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-800">Hot Water Systems</h3>
+                        <p class="text-gray-600">Installation, repair and maintenance of all hot water cylinder types to keep your home comfortable.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-wrench text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-800">Maintenance</h3>
+                        <p class="text-gray-600">Preventative maintenance programs to keep your plumbing systems running smoothly and avoid costly repairs.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-shower text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-800">Bathroom Renovations</h3>
+                        <p class="text-gray-600">Complete bathroom plumbing services including new installations, upgrades and renovations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-8 lg:mb-0 lg:pr-12">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-800">About Livesley Plumbing</h2>
+                    <p class="text-gray-700 mb-4">Based in Heathcote, Christchurch, Livesley Plumbing Limited proudly services the Canterbury region with professional, reliable plumbing services.</p>
+                    <p class="text-gray-700 mb-4">We specialize in all residential plumbing work, semi-commercial plumbing work, plumbing maintenance and emergency plumbing services. From leaking taps to hot water cylinder repairs and more, we've got you covered.</p>
+                    <p class="text-gray-700 mb-6">Our motto is simple: "For everything plumbing, we can do it. No job too big or small." We're tried and trusted by our community, delivering quality workmanship with honest pricing.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center bg-white px-4 py-2 rounded shadow">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Certified Plumbers</span>
+                        </div>
+                        <div class="flex items-center bg-white px-4 py-2 rounded shadow">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Local & Reliable</span>
+                        </div>
+                        <div class="flex items-center bg-white px-4 py-2 rounded shadow">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Emergency Services</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Plumber at work" class="rounded-lg shadow-lg w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-800">What Our Customers Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="review-card bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <span class="ml-2 text-sm text-gray-600">2 weeks ago</span>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Absolutely fantastic service! Fixed our leaking pipes quickly and professionally. Would highly recommend Livesley Plumbing to anyone needing plumbing work done."</p>
+                    <div class="flex items-center">
+                        <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sarah Johnson</h4>
+                            <p class="text-sm text-gray-500">Christchurch</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="review-card bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <span class="ml-2 text-sm text-gray-600">1 month ago</span>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Had an emergency with our hot water cylinder on a Sunday. Called Livesley Plumbing and they had someone out within the hour. Super professional and fixed the issue perfectly. Will definitely use them again."</p>
+                    <div class="flex items-center">
+                        <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Michael Brown</h4>
+                            <p class="text-sm text-gray-500">Heathcote</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="review-card bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <span class="ml-2 text-sm text-gray-600">3 months ago</span>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Used Livesley Plumbing for our bathroom renovation. Their attention to detail was impressive and they completed the work on time and on budget. Very happy with the results!"</p>
+                    <div class="flex items-center">
+                        <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Emma Wilson</h4>
+                            <p class="text-sm text-gray-500">Cashmere</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://www.google.com/search?q=Livesley+Plumbing" target="_blank" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition">
+                    <i class="fab fa-google mr-2"></i> Read More Reviews on Google
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Get In Touch</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-4">Contact Information</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-200"></i>
+                            <div>
+                                <h4 class="font-semibold">Address</h4>
+                                <p>Heathcote, Christchurch<br>Canterbury, New Zealand</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-blue-200"></i>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <a href="tel:+64000000000" class="hover:underline">+64 00 000 0000</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-200"></i>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <a href="mailto:info@livesleyplumbing.co.nz" class="hover:underline">info@livesleyplumbing.co.nz</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-blue-200"></i>
+                            <div>
+                                <h4 class="font-semibold">Hours</h4>
+                                <p>Monday - Friday: 8am - 5pm<br>Emergency services: 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h3 class="text-2xl font-semibold mb-4">Service Areas</h3>
+                        <p class="mb-4">We proudly service the entire Canterbury region including:</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-300 mr-2"></i>
+                                <span>Christchurch</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-300 mr-2"></i>
+                                <span>Heathcote</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-300 mr-2"></i>
+                                <span>Cashmere</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-300 mr-2"></i>
+                                <span>Lyttelton</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-300 mr-2"></i>
+                                <span>Sumner</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-300 mr-2"></i>
+                                <span>All Canterbury</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-4">Send Us a Message</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block mb-1">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-1">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="phone" class="block mb-1">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="service" class="block mb-1">Service Needed</label>
+                            <select id="service" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">Select a service</option>
+                                <option value="residential">Residential Plumbing</option>
+                                <option value="commercial">Commercial Plumbing</option>
+                                <option value="emergency">Emergency Service</option>
+                                <option value="hot-water">Hot Water System</option>
+                                <option value="maintenance">Maintenance</option>
+                                <option value="bathroom">Bathroom Renovation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-1">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-white hover:bg-gray-100 text-blue-800 font-bold py-3 px-4 rounded transition">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-tools text-2xl mr-2 text-blue-400"></i>
+                        <span class="text-xl font-bold">Livesley Plumbing</span>
+                    </div>
+                    <p class="text-gray-400">Your trusted Christchurch plumber</p>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="https://www.google.com/search?q=Livesley+Plumbing" target="_blank" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-google text-xl"></i>
+                    </a>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400 mb-2">© 2023 Livesley Plumbing Limited</p>
+                    <p class="text-gray-400 text-sm">All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Call Button -->
+    <a href="tel:+64000000000" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg floating-button transition">
+        <i class="fas fa-phone text-2xl"></i>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Form submission (would be connected to backend in real implementation)
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                form.reset();
+            });
+        }
+    </script>
+</body>
+</html>
