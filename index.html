@@ -347,22 +347,32 @@
                 
                 <div class="lg:w-1/2">
                     <h3 class="text-2xl font-semibold mb-4">Send Us a Message</h3>
-                    <form class="space-y-4">
+                    <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                        <!-- Web3Forms Access Key (replace with your actual key) -->
+                        <input type="hidden" name="access_key" value="8a285a97-f7a9-4828-a32c-40d79273463b">
+                        
+                        <!-- Honeypot Spam Protection -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                        
+                        <!-- Optional Redirect -->
+                        <!-- <input type="hidden" name="redirect" value="https://yourwebsite.com/thank-you.html"> -->
+                        
+                        <!-- Form Fields (keep your existing styling) -->
                         <div>
                             <label for="name" class="block mb-1">Your Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                         </div>
                         <div>
                             <label for="email" class="block mb-1">Email Address</label>
-                            <input type="email" id="email" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                         </div>
                         <div>
                             <label for="phone" class="block mb-1">Phone Number</label>
-                            <input type="tel" id="phone" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         </div>
                         <div>
                             <label for="service" class="block mb-1">Service Needed</label>
-                            <select id="service" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <select id="service" name="service" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 <option value="">Select a service</option>
                                 <option value="residential">Residential Plumbing</option>
                                 <option value="commercial">Commercial Plumbing</option>
@@ -375,7 +385,7 @@
                         </div>
                         <div>
                             <label for="message" class="block mb-1">Message</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
                         </div>
                         <button type="submit" class="w-full bg-white hover:bg-gray-100 text-blue-800 font-bold py-3 px-4 rounded transition">
                             Send Message
@@ -456,10 +466,67 @@
         // Form submission (would be connected to backend in real implementation)
         const form = document.querySelector('form');
         if (form) {
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                alert('Thank you for your message! We will get back to you soon.');
-                form.reset();
+                
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerHTML;
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `
+                    <svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-blue-800 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending...
+                `;
+                
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        // Show success message
+                        const successDiv = document.createElement('div');
+                        successDiv.className = 'mt-4 p-4 bg-green-100 text-green-700 rounded';
+                        successDiv.innerHTML = `
+                            <p class="font-bold">Thank you!</p>
+                            <p>Your message has been sent successfully. We'll get back to you soon.</p>
+                        `;
+                        form.parentNode.insertBefore(successDiv, form.nextSibling);
+                        
+                        // Reset form
+                        form.reset();
+                        
+                        // Scroll to success message
+                        setTimeout(() => {
+                            successDiv.scrollIntoView({ behavior: 'smooth' });
+                        }, 100);
+                        
+                        // Remove success message after 5 seconds
+                        setTimeout(() => {
+                            successDiv.remove();
+                        }, 5000);
+                    } else {
+                        throw new Error(result.message || 'Form submission failed');
+                    }
+                } catch (error) {
+                    alert('There was an error sending your message. Please try again or call us directly.');
+                    console.error('Form submission error:', error);
+                } finally {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                }
             });
         }
     </script>
